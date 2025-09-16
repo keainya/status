@@ -7,7 +7,6 @@ import (
 	"errors"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
-	keainya "github.com/keainya/status/kitex_gen/keainya"
 	status "github.com/keainya/status/kitex_gen/status"
 )
 
@@ -115,7 +114,7 @@ func newServiceClient(c client.Client) *kClient {
 	}
 }
 
-func (p *kClient) Status(ctx context.Context) (r *keainya.BaseResp, err error) {
+func (p *kClient) Status(ctx context.Context) (r *status.StatusInfo, err error) {
 	var _args status.StatusServiceStatusArgs
 	var _result status.StatusServiceStatusResult
 	if err = p.c.Call(ctx, "Status", &_args, &_result); err != nil {

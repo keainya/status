@@ -5,11 +5,48 @@ package status
 import (
 	"context"
 	"fmt"
-	"github.com/keainya/status/kitex_gen/keainya"
 )
 
+type StatusInfo struct {
+	Code int32  `thrift:"Code,1,required" frugal:"1,required,i32" json:"Code"`
+	Msg  string `thrift:"Msg,2,required" frugal:"2,required,string" json:"Msg"`
+}
+
+func NewStatusInfo() *StatusInfo {
+	return &StatusInfo{}
+}
+
+func (p *StatusInfo) InitDefault() {
+}
+
+func (p *StatusInfo) GetCode() (v int32) {
+	return p.Code
+}
+
+func (p *StatusInfo) GetMsg() (v string) {
+	return p.Msg
+}
+func (p *StatusInfo) SetCode(val int32) {
+	p.Code = val
+}
+func (p *StatusInfo) SetMsg(val string) {
+	p.Msg = val
+}
+
+func (p *StatusInfo) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("StatusInfo(%+v)", *p)
+}
+
+var fieldIDToName_StatusInfo = map[int16]string{
+	1: "Code",
+	2: "Msg",
+}
+
 type StatusService interface {
-	Status(ctx context.Context) (r *keainya.BaseResp, err error)
+	Status(ctx context.Context) (r *StatusInfo, err error)
 }
 
 type StatusServiceStatusArgs struct {
@@ -32,7 +69,7 @@ func (p *StatusServiceStatusArgs) String() string {
 var fieldIDToName_StatusServiceStatusArgs = map[int16]string{}
 
 type StatusServiceStatusResult struct {
-	Success *keainya.BaseResp `thrift:"success,0,optional" frugal:"0,optional,keainya.BaseResp" json:"success,omitempty"`
+	Success *StatusInfo `thrift:"success,0,optional" frugal:"0,optional,StatusInfo" json:"success,omitempty"`
 }
 
 func NewStatusServiceStatusResult() *StatusServiceStatusResult {
@@ -42,16 +79,16 @@ func NewStatusServiceStatusResult() *StatusServiceStatusResult {
 func (p *StatusServiceStatusResult) InitDefault() {
 }
 
-var StatusServiceStatusResult_Success_DEFAULT *keainya.BaseResp
+var StatusServiceStatusResult_Success_DEFAULT *StatusInfo
 
-func (p *StatusServiceStatusResult) GetSuccess() (v *keainya.BaseResp) {
+func (p *StatusServiceStatusResult) GetSuccess() (v *StatusInfo) {
 	if !p.IsSetSuccess() {
 		return StatusServiceStatusResult_Success_DEFAULT
 	}
 	return p.Success
 }
 func (p *StatusServiceStatusResult) SetSuccess(x interface{}) {
-	p.Success = x.(*keainya.BaseResp)
+	p.Success = x.(*StatusInfo)
 }
 
 func (p *StatusServiceStatusResult) IsSetSuccess() bool {

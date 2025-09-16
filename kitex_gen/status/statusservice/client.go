@@ -6,12 +6,12 @@ import (
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
-	keainya "github.com/keainya/status/kitex_gen/keainya"
+	status "github.com/keainya/status/kitex_gen/status"
 )
 
 // Client is designed to provide IDL-compatible methods with call-option parameter for kitex framework.
 type Client interface {
-	Status(ctx context.Context, callOptions ...callopt.Option) (r *keainya.BaseResp, err error)
+	Status(ctx context.Context, callOptions ...callopt.Option) (r *status.StatusInfo, err error)
 }
 
 // NewClient creates a client for the service defined in IDL.
@@ -43,7 +43,7 @@ type kStatusServiceClient struct {
 	*kClient
 }
 
-func (p *kStatusServiceClient) Status(ctx context.Context, callOptions ...callopt.Option) (r *keainya.BaseResp, err error) {
+func (p *kStatusServiceClient) Status(ctx context.Context, callOptions ...callopt.Option) (r *status.StatusInfo, err error) {
 	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
 	return p.kClient.Status(ctx)
 }

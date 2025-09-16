@@ -3,16 +3,16 @@ package main
 import (
 	"context"
 
-	keainya "github.com/keainya/status/kitex_gen/keainya"
+	status "github.com/keainya/status/kitex_gen/status"
 )
 
 // StatusServiceImpl implements the last service interface defined in the IDL.
 type StatusServiceImpl struct{}
 
 // Status implements the StatusServiceImpl interface.
-func (s *StatusServiceImpl) Status(ctx context.Context) (resp *keainya.BaseResp, err error) {
-	return &keainya.BaseResp{
+func (s *StatusServiceImpl) Status(ctx context.Context) (resp *status.StatusInfo, err error) {
+	return &status.StatusInfo{
 		Code: 0,
-		Msg:  "keainya central server",
+		Msg:  "keainya central server!",
 	}, nil
 }

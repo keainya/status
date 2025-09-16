@@ -7,8 +7,7 @@ import (
 )
 
 type BaseResp struct {
-	Code int32   `thrift:"Code,1,required" frugal:"1,required,i32" json:"Code"`
-	Msg  *string `thrift:"Msg,2,optional" frugal:"2,optional,string" json:"Msg,omitempty"`
+	Code int32 `thrift:"Code,1,required" frugal:"1,required,i32" json:"Code"`
 }
 
 func NewBaseResp() *BaseResp {
@@ -21,24 +20,8 @@ func (p *BaseResp) InitDefault() {
 func (p *BaseResp) GetCode() (v int32) {
 	return p.Code
 }
-
-var BaseResp_Msg_DEFAULT string
-
-func (p *BaseResp) GetMsg() (v string) {
-	if !p.IsSetMsg() {
-		return BaseResp_Msg_DEFAULT
-	}
-	return *p.Msg
-}
 func (p *BaseResp) SetCode(val int32) {
 	p.Code = val
-}
-func (p *BaseResp) SetMsg(val *string) {
-	p.Msg = val
-}
-
-func (p *BaseResp) IsSetMsg() bool {
-	return p.Msg != nil
 }
 
 func (p *BaseResp) String() string {
@@ -50,5 +33,4 @@ func (p *BaseResp) String() string {
 
 var fieldIDToName_BaseResp = map[int16]string{
 	1: "Code",
-	2: "Msg",
 }

@@ -1,8 +1,9 @@
 package main
 
 import (
-	status "github.com/keainya/status/kitex_gen/status/statusservice"
 	"log"
+
+	status "github.com/keainya/status/kitex_gen/status/statusservice"
 )
 
 func main() {
